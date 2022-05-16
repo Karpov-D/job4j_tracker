@@ -6,13 +6,13 @@ public class Error {
     int status;
     String message;
 
-    public Error (boolean active, int status, String message) {
+    public Error(boolean active, int status, String message) {
         this.active = active;
         this.status = status;
         this.message = message;
     }
 
-    public  Error () {
+    public  Error() {
     }
 
     public void printInfo() {
