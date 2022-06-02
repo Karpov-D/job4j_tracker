@@ -17,6 +17,7 @@ public class Library {
             Book pr = books[index];
             System.out.println(pr.getName() + " - " + pr.getCount());
         }
+
         Book pr = books[0];
         books[0] = books[3];
         books[3] = pr;
