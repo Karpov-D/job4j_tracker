@@ -8,6 +8,7 @@ public class StartUI {
         tracker.add(item);
         System.out.println("Добавленная заявка: " + item);
     }
+
     public static void showAllItems(Tracker tracker) {
         System.out.println("=== Show all items ===");
         Item[] items = tracker.findAll();
@@ -19,6 +20,7 @@ public class StartUI {
             System.out.println("Хранилище еще не содержит заявок");
         }
     }
+
     public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ===");
         int id = Integer.parseInt(input.askStr("Enter id: "));
@@ -30,6 +32,7 @@ public class StartUI {
             System.out.println("Ошибка замены заявки.");
         }
     }
+
     public static void deteleItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ===");
         int id = Integer.parseInt(input.askStr("Enter id: "));
@@ -39,6 +42,7 @@ public class StartUI {
             System.out.println("Ошибка удаления заявки.");
         }
     }
+
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Find item by id ===");
         int id = Integer.parseInt(input.askStr("Enter id: "));
@@ -49,6 +53,7 @@ public class StartUI {
             System.out.println("Заявка с введенным id: " + id + " не найдена.");
         }
     }
+
     public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Find items by name ===");
         String name = input.askStr("Enter name: ");
