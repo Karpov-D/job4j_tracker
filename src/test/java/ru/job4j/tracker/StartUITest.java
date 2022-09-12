@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StartUITest {
     @Test
-    public void whenAddItem() {
+    public void whenCreateItem() {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
@@ -21,11 +21,10 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {
-                String.valueOf(item.getId()),
-                "new item"
+                String.valueOf(item.getId())
         };
         StartUI.deteleItem(new StubInput(answers), tracker);
         Item deleted = tracker.findById(item.getId());
-        assertThat(deleted).isEqualTo(null);
+        assertThat(deleted).isNull();
     }
 }
