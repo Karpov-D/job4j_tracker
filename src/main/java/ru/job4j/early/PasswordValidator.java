@@ -20,7 +20,6 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
 
-
         for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (!isLetterOrDigit(c)) {
@@ -36,7 +35,6 @@ public class PasswordValidator {
                 lowerCase = true;
             }
             }
-
 
         if (!upperCase) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
