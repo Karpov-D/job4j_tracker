@@ -5,20 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Tracker {
-    private final ArrayList<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
-        size++;
         return item;
     }
 
     public int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
@@ -47,18 +45,17 @@ public class Tracker {
         boolean rsl = index > -1;
         if (rsl) {
             items.remove(index);
-            size--;
         }
         return rsl;
     }
 
     public List<Item> findAll() {
-        return items;
+        return List.copyOf(items);
     }
 
     public List<Item> findByName(String key) {
-        ArrayList<Item> rsl = new ArrayList<>();
-        for (int index = 0; index < size; index++) {
+        List<Item> rsl = new ArrayList<>();
+        for (int index = 0; index < items.size(); index++) {
             Item item = items.get(index);
             if (item.getName().equals(key)) {
                 rsl.add(item);
