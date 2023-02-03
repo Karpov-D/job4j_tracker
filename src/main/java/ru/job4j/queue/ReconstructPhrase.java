@@ -21,8 +21,7 @@ public class ReconstructPhrase {
             if (i % 2 != 0) {
                 builder.append(ch);
                 i++;
-            }
-            else {
+            } else {
                 i--;
             }
         }
