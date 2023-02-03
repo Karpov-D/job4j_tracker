@@ -6,10 +6,12 @@ import java.util.Iterator;
 public class ReconstructPhrase {
     private final Deque<Character> descendingElements;
     private final Deque<Character> evenElements;
+
     public ReconstructPhrase(Deque<Character> descendingElements, Deque<Character> evenElements) {
         this.descendingElements = descendingElements;
         this.evenElements = evenElements;
     }
+
     private String getEvenElements() {
         StringBuilder builder = new StringBuilder();
         int i = 1;
@@ -24,6 +26,7 @@ public class ReconstructPhrase {
         String result = builder.toString();
         return result;
     }
+
     private String getDescendingElements() {
         StringBuilder builder = new StringBuilder();
         for (Character ch : descendingElements) {
@@ -32,6 +35,7 @@ public class ReconstructPhrase {
         String result = builder.toString();
         return result;
     }
+
     public String getReconstructPhrase() {
         return getEvenElements() + getDescendingElements();
     }
