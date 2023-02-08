@@ -9,10 +9,7 @@ public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (!users.containsKey(user)) {
-            users.put(user, new ArrayList<Account>());
-        }
-
+        users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     public boolean deleteUser(String passport) {
@@ -28,16 +25,19 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        List<Account> acc = users.get(findByPassport(passport));
-        if (!acc.contains(account))  {
-            acc.add(account);
+        User user = findByPassport(passport);
+        if (user != null) {
+            List<Account> acc = users.get(user);
+            if (!acc.contains(account)) {
+                acc.add(account);
+            }
         }
     }
 
     public User findByPassport(String passport) {
         User rsl = null;
         for (User key : users.keySet()) {
-            if (key.getPassport() == passport) {
+            if (key.getPassport().equals(passport)) {
                 rsl = key;
                 break;
             }
@@ -51,7 +51,7 @@ public class BankService {
         if (user != null) {
             List<Account> acc = users.get(user);
             for (Account ac : acc) {
-                if (ac.getRequisite() == requisite) {
+                if (ac.getRequisite().equals(requisite)) {
                     rsl = ac;
                     break;
                 }
@@ -65,12 +65,10 @@ public class BankService {
         boolean rsl = false;
         Account srcAcc = findByRequisite(srcPassport, srcRequisite);
         Account destAcc = findByRequisite(destPassport, destRequisite);
-        if (srcAcc != null && destAcc != null) {
-            if (srcAcc.getBalance() >= amount) {
-                srcAcc.setBalance(srcAcc.getBalance() - amount);
-                destAcc.setBalance(destAcc.getBalance() + amount);
-                rsl = true;
-            }
+        if (srcAcc != null && destAcc != null && srcAcc.getBalance() >= amount) {
+            srcAcc.setBalance(srcAcc.getBalance() - amount);
+            destAcc.setBalance(destAcc.getBalance() + amount);
+            rsl = true;
         }
         return rsl;
     }
