@@ -58,7 +58,7 @@ public class AnalyzeByMap {
             value = 0;
         }
         res.sort(Comparator.naturalOrder());
-        return res.get(res.size()-1);
+        return res.get(res.size() - 1);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
@@ -72,6 +72,6 @@ public class AnalyzeByMap {
             value = 0;
         }
         res.sort(Comparator.naturalOrder());
-        return res.get(res.size()-1);
+        return res.get(res.size() - 1);
     }
 }
