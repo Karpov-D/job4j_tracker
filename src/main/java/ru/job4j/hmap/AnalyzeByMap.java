@@ -88,16 +88,5 @@ public class AnalyzeByMap {
                 new Label("Philosophy", valuePhilosophy)));
         res.sort(Comparator.naturalOrder());
         return res.get(res.size() - 1);
-//        List<Label> res = new ArrayList<>();
-//        double value = 0;
-//        for (int i = 0; i < pupils.get(0).subjects().size(); i++) {
-//            for (Pupil pupil : pupils) {
-//                value += pupil.subjects().get(i).score();
-//            }
-//            res.add(new Label(pupils.get(0).subjects().get(i).name(), value));
-//            value = 0;
-//        }
-//        res.sort(Comparator.naturalOrder());
-//        return res.get(res.size() - 1);
     }
 }
