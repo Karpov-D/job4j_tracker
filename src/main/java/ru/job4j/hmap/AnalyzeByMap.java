@@ -32,24 +32,21 @@ public class AnalyzeByMap {
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        double valueMath = 0;
-        double valueLang = 0;
-        double valuePhilosophy = 0;
-        for (int i = 0; i < pupils.size(); i++) {
-            List<Subject> subject = pupils.get(i).subjects();
+        HashMap<String, Integer> map = new HashMap<>();
+        for (Pupil pupil : pupils) {
+            List<Subject> subject = pupil.subjects();
             for (Subject sub : subject) {
-                if (sub.name().equals("Math")) {
-                   valueMath += sub.score();
-                } else if (sub.name().equals("Lang")) {
-                    valueLang += sub.score();
-                } else if (sub.name().equals("Philosophy")) {
-                    valuePhilosophy += sub.score();
+                if (map.containsKey(sub.name())) {
+                    map.put(sub.name(), map.get(sub.name()) + sub.score());
+                } else {
+                    map.put(sub.name(), sub.score());
                 }
             }
         }
-        List<Label> res = List.of(new Label("Math", valueMath / pupils.size()),
-                new Label("Lang", valueLang / pupils.size()),
-                new Label("Philosophy", valuePhilosophy / pupils.size()));
+        List<Label> res = new ArrayList<>();
+        for (String key : map.keySet()) {
+            res.add(new Label(key, map.get(key) / pupils.size()));
+        }
         return res;
     }
 
@@ -68,25 +65,23 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        double valueMath = 0;
-        double valueLang = 0;
-        double valuePhilosophy = 0;
-        for (int i = 0; i < pupils.size(); i++) {
-            List<Subject> subject = pupils.get(i).subjects();
+        HashMap<String, Integer> map = new HashMap<>();
+        for (Pupil pupil : pupils) {
+            List<Subject> subject = pupil.subjects();
             for (Subject sub : subject) {
-                if (sub.name().equals("Math")) {
-                    valueMath += sub.score();
-                } else if (sub.name().equals("Lang")) {
-                    valueLang += sub.score();
-                } else if (sub.name().equals("Philosophy")) {
-                    valuePhilosophy += sub.score();
+                if (map.containsKey(sub.name())) {
+                    map.put(sub.name(), map.get(sub.name()) + sub.score());
+                } else {
+                    map.put(sub.name(), sub.score());
                 }
             }
         }
-        List<Label> res = new ArrayList<>(List.of(new Label("Math", valueMath),
-                new Label("Lang", valueLang),
-                new Label("Philosophy", valuePhilosophy)));
+        List<Label> res = new ArrayList<>();
+        for (String key : map.keySet()) {
+            res.add(new Label(key, map.get(key)));
+        }
         res.sort(Comparator.naturalOrder());
         return res.get(res.size() - 1);
     }
 }
+
