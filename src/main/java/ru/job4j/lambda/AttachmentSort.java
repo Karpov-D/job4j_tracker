@@ -20,7 +20,6 @@ public class AttachmentSort {
         attachments.sort(comparator);
         System.out.println(attachments);
 
-
         Comparator<Attachment> comparatorByName = new Comparator<>() {
             @Override
             public int compare(Attachment o1, Attachment o2) {
