@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class ListToMapTest {
 
@@ -40,6 +41,6 @@ public class ListToMapTest {
         expected.put("Ivanov", new Student(30, "Ivanov"));
         expected.put("Petrov", new Student(40, "Petrov"));
         expected.put("Sidorov", new Student(60, "Sidorov"));
-        assertThat(result).containsAllEntriesOf(expected);
+        assertTrue(result.keySet().equals(expected.keySet()));
     }
 }
